@@ -4,9 +4,6 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , login = require('./routes/login')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 
@@ -20,6 +17,8 @@ app.configure(function(){
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
+  app.use(express.cookieParser());
+  app.use(express.session({secret: new Date().toString()}));
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
@@ -29,13 +28,23 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+
+
+
+
+/* DB connection */
+require('./database')(app);
+
 /*Route*/
-app.get('/', login.start);
-app.get('/login', login.start);
-app.get('/index', routes.index);
-app.get('/users', user.list);
+
+
+require('./routes/index')(app);
+require('./routes/user')(app);
+require('./routes/books')(app);
+
 
 /*Go!*/
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
+  console.log("Express server started on ", new Date());
 });

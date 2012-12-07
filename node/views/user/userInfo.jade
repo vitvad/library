@@ -1,0 +1,58 @@
+extends ../structure/layout
+
+block vars
+	- var title="User Info"
+
+block content
+	include ../structure/header
+
+	//- Main 
+	div(class="container-fluid content")
+		div.row-fluid
+			//- Sidebar
+			div.span3
+				//- sidebar widget
+				div(class="well sidebar-nav")
+					ul(class="nav nav-list")
+						li.nav-header Tags
+						//- Repeat block
+						li.active
+							a(href="#") Link
+						li
+							a(href="#") Link
+						li
+							a(href="#") Link
+
+				//- Tags
+				div(class="well tags")
+					//- Repeat block
+					a(href="#")
+						span(class="label label-info") javascript
+
+				div(class="well in-use")
+					h3 I should return:
+					ul(class="nav nav-list")
+						//- Repeat block
+						li
+							p
+								a(href="#",class="thumbnail")
+									img(src="http://placehold.it/75x110",alt="book")
+							p
+								a(href="#") Book
+
+			//- Content block
+			div(class="span9 user-info")
+				form.span5(action="/user",method="post")
+					//- Error Message if exist
+					- if (typeof(errorMess) != 'undefined')
+						em.icon-warning-sign
+						strong.red= errorMess
+
+					//- Form
+					h2.form-signin-heading Hello #{user.login}
+					input.input-block-level(type="text",name="name",placeholder="User name",value="#{user.login}")
+					textarea.span12(cols="15",rows="5",name="description",placeholder="Write something about your self")= user.description
+					br
+					input.input-block-level(type="text",name="email",placeholder="Email address",value="#{user.email}")
+					input.input-block-level(type="password",name="pass",placeholder="Password")
+					button(class="btn btn-small btn-primary",type="submit") Save changes

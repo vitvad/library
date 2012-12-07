@@ -1,7 +1,11 @@
+html{height: 100%;}
 body{
 	padding-top: 40px;
 	padding-bottom: 40px;
 	background-color: #f5f5f5;
+	position: relative;
+	box-sizing: border-box;
+	min-height: 100%;
 }
 .form-signin {
 	max-width: 300px;
@@ -57,4 +61,12 @@ body{
 .single-book .thumbnail{
 	float: left;
 	margin-right: 15px;
+}
+.red{
+	color: #f00;
+}
+footer.container-fluid{
+	position: absolute;
+	bottom: 0;
+	top: auto;
 }

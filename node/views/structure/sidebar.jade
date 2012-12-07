@@ -1,0 +1,30 @@
+div.span3
+	//- sidebar widget
+	div(class="well sidebar-nav")
+		ul(class="nav nav-list")
+			li.nav-header Tags
+			//- Repeat block
+			- var links = [{"href":"/", "text": "Link"},{"href":"/", "text": "Link"},{"href":"/", "text": "Link"}]
+			each link in links
+				li
+					a(href="#{link.href}")=link.text
+
+	//- Tags
+	div(class="well tags")
+		//- Repeat block
+		- var tags = [{"href":"/", "text": "javascript"},{"href":"/", "text": "Java"},{"href":"/", "text": "C++"}]
+		each tag in tags
+			a(href="#{tag.href}")
+				span(class="label label-info")=tag.text
+			&nbsp;
+
+	div(class="well in-use")
+		h3 I should return:
+		ul(class="nav nav-list")
+			//- Repeat block
+			li
+				p
+					a(href="#",class="thumbnail")
+						img(src="http://placehold.it/75x110",alt="book")
+				p
+					a(href="#") Book

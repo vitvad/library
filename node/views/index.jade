@@ -1,2 +1,11 @@
-h1= title
-p Welcome to #{title}
+extends structure/layout
+
+block content
+
+	include structure/header
+
+	//- Main 
+	div(class="container-fluid content")
+		div.row-fluid
+			//- Sidebar
+			include structure/sidebar

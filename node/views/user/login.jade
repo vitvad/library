@@ -1,0 +1,15 @@
+extends ../structure/layout
+
+block vars
+	- var title="Login"
+
+block content
+	div.container
+		form.form-signin(action="/login", method="POST")
+			- if (typeof(errorMess) != 'undefined')
+				strong.red= errorMess
+			h2.form-signin-heading="Please sign in"
+			input.input-block-level(type="text",placeholder="Email address", name="email")
+			input.input-block-level(type="password",placeholder="Password", name="pass")
+			button.btn.btn-small.btn-primary(type="submit")="Sign in"
+			a(href="/create")="create user?"
