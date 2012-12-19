@@ -1,0 +1,18 @@
+div(class="well well-small")
+	h2 Add book
+	form(action="/books", method="post")
+		- if (typeof(errorMess) != 'undefined')
+			em.icon-warning-sign
+			strong.red= errorMess
+		div.span6
+			input(type="text", class="input-block-level span12", name="book.title", placeholder="book title")
+			input(type="text", class="input-block-level span12", name="book.author", placeholder="book author")
+			input(type="text", class="input-block-level span12", name="book.year", placeholder="year")
+
+		div.span6
+			textarea(cols="15", rows="5", class="input-block-level span12", name="book.description", placeholder="description")
+
+		input(type="text", class="input-block-level span6", name="book.tags", placeholder="Tags")
+		input(type="hidden", name="books.newbook", value="true")
+		div.clearfix
+		button(class="btn btn-small btn-primary", type="submit")="add book"

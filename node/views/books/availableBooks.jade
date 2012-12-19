@@ -1,0 +1,20 @@
+- if (books && books.length)
+	div(class="well well-small")
+		h2 My Books
+		ul(class="list unstyled")
+			//- Repeat block
+			each book in books
+				li
+					div(class="item single-book")
+						div.thumbnail
+							img(src="http://placehold.it/50x76", alt="photo")
+
+						h3 #{book.title}
+						p #{book.description}
+						//- Repeat block
+						- if(book.tags)
+							div.tags
+								each tag in book.tags
+									a(href="#{tag.url}")
+										span(class="label label-info") #{tag.name}
+									&nbsp;

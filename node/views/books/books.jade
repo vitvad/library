@@ -1,19 +1,23 @@
-extends structure/layout
+extends ../structure/layout
 
 block vars
+	- var title = "My Books"
 	- var books = books || [] //[{title: "book name", description: "Lorem ipsum dolor sit amet", tags: [{url: "#", name: "javascript"},{url: "#", name: "Java"}]}, {title: "book name", description: "Lorem ipsum dolor sit amet", tags: [{url: "#", name: "javascript"},{url: "#", name: "Java"}]}]
 
 block content
 
-	include structure/header
+	include ../structure/header
 
 	//- Main 
 	div(class="container-fluid content")
 		div.row-fluid
 			//- Sidebar
-			include structure/sidebar
+			include ../structure/sidebar
 
 			div(class="span9 single-book")
-				include books/availableBooks
+				include ../books/createBook
 
-				p piy piy olololo
+				include ../books/availableBooks
+
+
+				p OLOLOLOLOLO

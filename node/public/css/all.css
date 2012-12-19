@@ -65,6 +65,8 @@ body{
 .red{
 	color: #f00;
 }
+
+.tags {clear: left;padding-top: 10px;}
 footer.container-fluid{
 	position: absolute;
 	bottom: 0;
