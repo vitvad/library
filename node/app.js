@@ -46,7 +46,7 @@ require('./routes/books')(app);
 /* Global Rout */
 
 /*Go!*/
-http.createServer(app).listen( app.get('port'), app.get('address') , function(req, res){
+http.createServer(app).listen( app.get('port') , function(req, res){
 	console.log("Express server listening on " + app.get('address') + ":" + app.get('port'));
 	console.log("Express server started on ", new Date());
 });
