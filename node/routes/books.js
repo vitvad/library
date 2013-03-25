@@ -56,13 +56,14 @@ module.exports = function(app){
 			perPage = 5,
 			curPage = 0
 
-		if(res.app.route.indexOf("/books")!=-1){
+		console.log("Current route: ", req.route.path);
+
+		if(req.route.path && req.route.path.indexOf("/books")!=-1){
 			collection.find({"owner": req.session.user.email}).toArray(function(err, docs) {
 				if(err) console.log("Find books by owner field: ", err);
 				cb(req, res, docs);
 			});
 		}else{
-
 			collection.find().skip(curPage * perPage).limit(perPage).toArray(function(err, docs) {
 				if(err) console.log("Find all books: ", err);
 				cb(req, res, docs);

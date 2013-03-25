@@ -11,6 +11,7 @@ var app = express();
 
 app.configure(function(){
 	app.set('port', process.env.PORT || 3000);
+	app.set('address', process.env.ADDRESS || 'epuakhaw0143');
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'jade');
 	app.use(express.favicon());
@@ -45,7 +46,7 @@ require('./routes/books')(app);
 /* Global Rout */
 
 /*Go!*/
-http.createServer(app).listen(app.get('port'), function(){
-	console.log("Express server listening on port " + app.get('port'));
+http.createServer(app).listen( app.get('port'), app.get('address') , function(req, res){
+	console.log("Express server listening on " + app.get('address') + ":" + app.get('port'));
 	console.log("Express server started on ", new Date());
 });
